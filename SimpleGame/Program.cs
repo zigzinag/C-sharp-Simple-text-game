@@ -61,14 +61,14 @@ namespace SimpleGame
     class Zombie
     {
         public string Name = "Zombie";
-        public double Health = 60.0;
+        public double Health = 55.0;
         public double Damage = 10.0;
         ~Zombie() { }
     }
     class Witch
     {
         public string Name = "Witch";
-        public double Health = 70.0;
+        public double Health = 60.0;
         public double Damage = 10.0;
         ~Witch() { }
     }
@@ -311,6 +311,7 @@ namespace SimpleGame
                 changed_player_hp = first_room.health;
                 changed_damage_hp = first_room.damage;
                 Console.WriteLine();
+                Console.Clear();
                 Console.WriteLine("You entered second room. You see the very dangerous Zombie");
 
                 /* Here I start the second battle */
@@ -332,7 +333,8 @@ namespace SimpleGame
                     changed_player_hp = second_room.health;
                     changed_damage_hp = second_room.damage;
                     Console.WriteLine();
-                    Console.WriteLine("You entered second room. You see the very dangerous Witch");
+                    Console.Clear();
+                    Console.WriteLine("You entered third room. You see the very dangerous Witch");
 
                     /* Here I start the third battle */
                     Witch w = new Witch();
@@ -352,6 +354,7 @@ namespace SimpleGame
                         changed_player_hp = third_room.health;
                         changed_damage_hp = third_room.damage;
                         HealthBar fourth = new HealthBar(changed_player_hp);
+                        Console.Clear();
                         Console.WriteLine("You open last door.");
                         Console.WriteLine("You stand under the sky, you are tired, but your journey only beginning");
                         Console.ForegroundColor = ConsoleColor.Red;
