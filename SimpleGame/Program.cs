@@ -292,7 +292,7 @@ namespace SimpleGame
 
             int rand_dmg = 9;
 
-            Console.WriteLine("You entered second room. You see the very dangerous Skeleton");
+            Console.WriteLine("You entered first room. You see the very dangerous Skeleton");
             Skeleton s = new Skeleton();
             Battle first_battle = new Battle(rand_dmg, s.Health, changed_player_hp, changed_damage_hp, s.Damage, s.Name);
             if (first_battle.return_health <= 0)
