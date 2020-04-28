@@ -17,7 +17,7 @@ namespace SimpleGame
             {
                 Name = char.ToUpper(nm[0]) + nm.Substring(1);
             }
-            Console.WriteLine("Are you {0}, ok. \nYou in the strange house and you need to go out!", Name);
+            Console.WriteLine("You are {0}, ok. \nYou in the strange house and you need to go out!", Name);
             Console.WriteLine();
         }
     }
