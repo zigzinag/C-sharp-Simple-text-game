@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -268,7 +268,9 @@ namespace SimpleGame
         public void afterBattle()
         {
             Console.WriteLine();
-            Console.WriteLine("You win a battle. Are you want to find something in the room?\"Yes\" or \"Not\": ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("You win a battle. Are you want to find something in the room? \"Yes\" or \"Not\": ", Console.ForegroundColor);
+            Console.ForegroundColor = ConsoleColor.Gray;
             string answer = Console.ReadLine().ToUpper();
             if (answer == "YES")
             {
@@ -298,7 +300,9 @@ namespace SimpleGame
             Battle first_battle = new Battle(rand_dmg, s.Health, changed_player_hp, changed_damage_hp, s.Damage, s.Name);
             if (first_battle.return_health <= 0)
             {
-                Console.WriteLine("You died!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You died!", Console.ForegroundColor);
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
             else
             {
@@ -317,7 +321,9 @@ namespace SimpleGame
                 Battle second_battle = new Battle(rand_dmg, z.Health, changed_player_hp, changed_damage_hp, z.Damage, z.Name);
                 if (second_battle.return_health <= 0)
                 {
-                    Console.WriteLine("You died!");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You died!", Console.ForegroundColor);
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 else
                 {
@@ -336,7 +342,9 @@ namespace SimpleGame
                     Battle third_battle = new Battle(rand_dmg, w.Health, changed_player_hp, changed_damage_hp, w.Damage, w.Name);
                     if (third_battle.return_health <= 0)
                     {
-                        Console.WriteLine("You died!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("You died!", Console.ForegroundColor);
+                        Console.ForegroundColor = ConsoleColor.Gray;
                     }
                     else
                     {
@@ -349,6 +357,9 @@ namespace SimpleGame
                         HealthBar fourth = new HealthBar(changed_player_hp);
                         Console.WriteLine("You open last door.");
                         Console.WriteLine("You stand under the sky, you are tired, but your journey only beginning");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Press any key to quit...", Console.ForegroundColor);
+                        Console.ReadKey();
                     }
                 }
             }
