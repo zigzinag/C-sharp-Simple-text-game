@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading;
 
 namespace SimpleGame
 {
@@ -289,10 +290,11 @@ namespace SimpleGame
             double changed_damage_hp = klass.player_damage;
 
             Console.WriteLine("You are starting fight now!");
-
             int rand_dmg = 9;
 
             Console.WriteLine("You entered first room. You see the very dangerous Skeleton");
+            Thread.Sleep((int)(1000));
+
             Skeleton s = new Skeleton();
             Battle first_battle = new Battle(rand_dmg, s.Health, changed_player_hp, changed_damage_hp, s.Damage, s.Name);
             if (first_battle.return_health <= 0)
@@ -312,7 +314,9 @@ namespace SimpleGame
                 changed_damage_hp = first_room.damage;
                 Console.WriteLine();
                 Console.Clear();
+
                 Console.WriteLine("You entered second room. You see the very dangerous Zombie");
+                Thread.Sleep((int)(1000));
 
                 /* Here I start the second battle */
                 Zombie z = new Zombie();
@@ -334,7 +338,9 @@ namespace SimpleGame
                     changed_damage_hp = second_room.damage;
                     Console.WriteLine();
                     Console.Clear();
+
                     Console.WriteLine("You entered third room. You see the very dangerous Witch");
+                    Thread.Sleep((int)(1000));
 
                     /* Here I start the third battle */
                     Witch w = new Witch();
@@ -355,7 +361,9 @@ namespace SimpleGame
                         changed_damage_hp = third_room.damage;
                         HealthBar fourth = new HealthBar(changed_player_hp);
                         Console.Clear();
+
                         Console.WriteLine("You open last door.");
+                        Thread.Sleep((int)(1000));
                         Console.WriteLine("You stand under the sky, you are tired, but your journey only beginning");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Press any key to quit...", Console.ForegroundColor);
