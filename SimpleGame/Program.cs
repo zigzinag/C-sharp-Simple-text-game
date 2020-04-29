@@ -4,10 +4,10 @@ using System.Threading;
 
 namespace SimpleGame
 {
-    class choosen_name
+    class ChoosenName
     {
         public string Name;
-        public choosen_name(string nm)
+        public ChoosenName(string nm)
         {
             if (nm == "")
             {
@@ -127,7 +127,7 @@ namespace SimpleGame
         public ChoosenClass()
         {
             Console.WriteLine("Choose your name:");
-            choosen_name name_of_player = new choosen_name(Console.ReadLine());
+            ChoosenName name_of_player = new ChoosenName(Console.ReadLine());
             Console.WriteLine("Choose your class. Type \"Mage\" or \"Warrior\"");
             string class_of_person = Console.ReadLine().ToUpper();
             Console.WriteLine();
@@ -160,15 +160,15 @@ namespace SimpleGame
     {
         private double max_hp_sign = 20.0;
         //Here, I made variable, that means maximum quantitiy of signs in health bar
-        private double rel_hp(double hp)
+        private double RelativeHp(double hp)
         {
             double hpi = hp / 100.0 * max_hp_sign;
             return hpi;
         }
         //Here, I find relative value of current health
-        private double anti_hp(double hp)
+        private double AntiHp(double hp)
         {
-            double anti_hpi = max_hp_sign - rel_hp(hp);
+            double anti_hpi = max_hp_sign - RelativeHp(hp);
             return anti_hpi;
         }
         //I print health bar
@@ -189,8 +189,8 @@ namespace SimpleGame
             Console.WriteLine();
             Console.WriteLine("Level of your health:");
             Console.WriteLine("|" +
-                string.Concat(Enumerable.Repeat("=", Convert.ToInt32(rel_hp(hp)))) +
-                string.Concat(Enumerable.Repeat(" ", Convert.ToInt32(anti_hp(hp)))) +
+                string.Concat(Enumerable.Repeat("=", Convert.ToInt32(RelativeHp(hp)))) +
+                string.Concat(Enumerable.Repeat(" ", Convert.ToInt32(AntiHp(hp)))) +
                 "|");
         }
         // And now, I desctruct class
@@ -209,7 +209,7 @@ namespace SimpleGame
         }
         static int index = 0;
 
-        public double find_health()
+        public double FindHealth()
         {
             Random randy = new Random();
             int stuff = randy.Next(101);
@@ -239,7 +239,7 @@ namespace SimpleGame
                 return health += 5;
             }
         }
-        public double find_damage()
+        public double FindDamage()
         {
             Random randy = new Random();
             int stuff = randy.Next(101);
@@ -263,7 +263,7 @@ namespace SimpleGame
             health = hlth;
             damage = dmg;
         }
-        public void afterBattle()
+        public void AfterBattle()
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -273,8 +273,8 @@ namespace SimpleGame
             if (answer == "YES")
             {
                 Room room = new Room(health, damage);
-                health = room.find_health();
-                damage = room.find_damage();
+                health = room.FindHealth();
+                damage = room.FindDamage();
                 Console.WriteLine("You searched the whole room and you open the door to the next room.");
             }
             else { Console.WriteLine("You go to the another room!"); }
@@ -309,7 +309,7 @@ namespace SimpleGame
                 changed_player_hp = first_battle.return_health;
                 HealthBar first = new HealthBar(changed_player_hp);
                 WinningSituation first_room = new WinningSituation(changed_player_hp, changed_damage_hp);
-                first_room.afterBattle();
+                first_room.AfterBattle();
                 changed_player_hp = first_room.health;
                 changed_damage_hp = first_room.damage;
                 Console.WriteLine();
@@ -333,7 +333,7 @@ namespace SimpleGame
                     changed_player_hp = second_battle.return_health;
                     HealthBar second = new HealthBar(changed_player_hp);
                     WinningSituation second_room = new WinningSituation(changed_player_hp, changed_damage_hp);
-                    second_room.afterBattle();
+                    second_room.AfterBattle();
                     changed_player_hp = second_room.health;
                     changed_damage_hp = second_room.damage;
                     Console.WriteLine();
@@ -356,7 +356,7 @@ namespace SimpleGame
                         Console.WriteLine("You killed a {0}", w.Name);
                         HealthBar third = new HealthBar(changed_player_hp);
                         WinningSituation third_room = new WinningSituation(changed_player_hp, changed_damage_hp);
-                        third_room.afterBattle();
+                        third_room.AfterBattle();
                         changed_player_hp = third_room.health;
                         changed_damage_hp = third_room.damage;
                         HealthBar fourth = new HealthBar(changed_player_hp);
